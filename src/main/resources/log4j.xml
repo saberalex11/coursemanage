@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<!-- Appenders -->
+    <appender name="web" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <!-- <param name="ConversionPattern" value="%d %p [%c] - %m%n"/> -->
+            <param name="ConversionPattern" value="[%p] [%d{yyyy-MM-dd HH\:mm\:ss}][%c]%m%n"/>
+        </layout> 
+    </appender> 
+
+    <!-- 每天生成一个日志文件到指定目录下 -->
+    <appender name="dailyRollingInfoFile" class="org.apache.log4j.DailyRollingFileAppender"> 
+        <param name="Encoding" value="UTF-8" />  
+        <param name="File" value="${catalina.home}/logs/workorderBusiness.log" />   
+        <param name="Append" value="true" />     
+        <param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />    
+        <layout class="org.apache.log4j.PatternLayout">       
+            <!-- <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss\} %-5p] [%t] {%c:%L}-%m%n" />    -->
+            <param name="ConversionPattern" value="[%p] [%d{yyyy-MM-dd HH\:mm\:ss}][%c]%m%n" />
+        </layout> 
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="INFO" />
+			<param name="LevelMax" value="FATAL" />
+		</filter>
+    </appender>
+    
+    <appender name="dailyRollingDebugFile" class="org.apache.log4j.DailyRollingFileAppender"> 
+        <param name="Encoding" value="UTF-8" />  
+        <param name="File" value="${catalina.home}/logs/workorderSys.log" />   
+        <param name="Append" value="true" />     
+        <param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />     
+        <layout class="org.apache.log4j.PatternLayout">       
+            <!-- <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss\} %-5p] [%t] {%c:%L}-%m%n" />    -->
+            <param name="ConversionPattern" value="[%p] [%d{yyyy-MM-dd HH\:mm\:ss}][%c]%m%n" />
+        </layout> 
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="DEBUG" />
+			<param name="LevelMax" value="FATAL" />
+		</filter>
+    </appender>
+    
+	<category name="org.springframework">
+	  <priority value="INFO"/>
+	</category> 
+    
+    <root>
+        <level value="DEBUG"/>
+        <appender-ref ref="dailyRollingInfoFile"/>
+        <appender-ref ref="dailyRollingDebugFile"/>
+        <appender-ref ref="web"/>
+    </root>
+</log4j:configuration>

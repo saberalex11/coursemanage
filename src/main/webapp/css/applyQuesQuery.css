@@ -1,0 +1,94 @@
+@charset "utf-8";
+/*整体最小宽高以及雪碧图*/
+section.applyQuesQueryArea{min-width: 1250px;margin: 0 auto;position: relative;min-height:817px;}
+.iconApplyQuesImage{background: url(../images/applyQuesQuery.png) no-repeat;background-size:85px auto;display: inline-block;overflow: hidden;}
+/*左边栏*/
+section.applyQuesQueryArea ul.leftList{width: 200px;height:100%;background: #3a7dd8;position: absolute;top:0;left:0;}
+section.applyQuesQueryArea ul.leftList li{position: relative;margin-bottom: 10px;}
+section.applyQuesQueryArea ul.leftList li:nth-child(1){margin-top: 18px;}
+section.applyQuesQueryArea ul.leftList li a{display: block;width: 68%;height:16px;padding: 17px 16%;}
+section.applyQuesQueryArea ul.leftList li span{line-height: 16px;font-size: 14px;margin-left:10%;color: #87b5f6;}
+section.applyQuesQueryArea ul.leftList li i.applyForm{width: 16px;height:16px;background-position: 0 0;}
+section.applyQuesQueryArea ul.leftList li i.questionForm{width: 17px;height:17px;background-position: -40px 0;}
+section.applyQuesQueryArea ul.leftList li i.feedback{width: 18px;height:17px;background-position: 0 -20px;margin-top: -1px;}
+section.applyQuesQueryArea ul.leftList li.active,section.applyQuesQueryArea ul.leftList li:hover{background: #2972d5;}
+section.applyQuesQueryArea ul.leftList li.active i.applyForm,section.applyQuesQueryArea ul.leftList li:hover i.applyForm{background-position: -20px 0;}
+section.applyQuesQueryArea ul.leftList li.active i.questionForm,section.applyQuesQueryArea ul.leftList li:hover i.questionForm{background-position: -60px 0;}
+section.applyQuesQueryArea ul.leftList li.active i.feedback,section.applyQuesQueryArea ul.leftList li:hover i.feedback{background-position: -20px -20px;}
+section.applyQuesQueryArea ul.leftList li.active span,section.applyQuesQueryArea ul.leftList li:hover span{color: #fff;}
+section.applyQuesQueryArea ul.leftList li.active:after,section.applyQuesQueryArea ul.leftList li:hover:after{content: '';width: 5px;height: 10px;background: url(../images/applyQuesQuery.png) no-repeat;background-size:85px auto;background-position: -40px -20px;position: absolute;top: 20px;right: 17px;overflow: hidden;clear: both;}
+/*右侧内容区-申请单/问题单公共*/
+section.applyQuesQueryArea section.rightContent{width:85%;margin-left:200px;border-top: 1px solid #e5e5e5;}
+section.applyQuesQueryArea section.rightContent .contentTitle{width:96%;margin:0 auto;position: relative;}
+section.applyQuesQueryArea section.rightContent .contentTitle h1{font-size: 18px;color:#212121;padding-top: 20px;line-height: 20px;font-weight: normal;}
+section.applyQuesQueryArea section.rightContent .contentTitle h2{font-size: 14px;color:#999;font-weight: normal;padding: 15px 0;}
+section.applyQuesQueryArea section.rightContent table.tableTitle{width:100%;background: #eff6ff;font-size: 16px;height:42px;line-height: 42px;color:#212121;text-align: center;border: 1px solid #cdddf3;border-radius: 5px;margin-top: 15px;}
+section.applyQuesQueryArea section.rightContent table.tableTitle th{font-weight: normal;}
+section.applyQuesQueryArea section.rightContent .tableWithNoInfo{width:100%;margin-top:60px;text-align: center;display: none;}
+section.applyQuesQueryArea section.rightContent .tableWithNoInfo i.iconNoInfo{width: 40px;height:40px;background-position: -45px -27px;}
+section.applyQuesQueryArea section.rightContent .tableWithNoInfo h3{width: 100%;margin-top: 30px;color:#212121;font-size: 16px;}
+section.applyQuesQueryArea  section.rightContent table.tableContent{width:100%;font-size: 16px;color:#666;text-align: center;}
+section.applyQuesQueryArea  section.rightContent table.tableContent td{height:40px;line-height: 40px;border-bottom: 1px solid #eee;font-size: 14px;}
+section.applyQuesQueryArea  section.rightContent table.tableContent td a.listId{cursor: pointer;}
+/*右侧内容区-申请单*/
+section.applyForm .contentTitle .searchInput{width:630px;position: absolute;top:25px;right:0;}
+section.applyForm .searchInput input{width:480px;height:42px;line-height:42px;border:1px solid #ddd;border-radius: 5px;padding: 0 23px;margin-right: 17px;font-size: 13px;}
+section.applyForm .searchInput button{width:80px;height:40px;border: none;margin-top: 2px;background: #3a7dd8;color: #fff;line-height: 40px;border-radius: 5px;font-size: 16px;cursor: pointer;}
+section.applyForm .searchInput button:hover{background: #3574ca;}
+section.applyForm  section.rightContent table.tableTitle th,section.applyForm  section.rightContent table.tableContent td{width: 7%;}
+section.applyForm  section.rightContent table.tableTitle th:nth-child(1),section.applyForm  section.rightContent table.tableContent td:nth-child(1){width: 11.5%;}
+section.applyForm  section.rightContent table.tableTitle th:nth-child(3),section.applyForm  section.rightContent table.tableContent td:nth-child(3){width: 17.5%;}
+section.applyForm  section.rightContent table.tableTitle th:nth-child(4),section.applyForm  section.rightContent table.tableContent td:nth-child(4){width: 16%;}
+section.applyForm  section.rightContent table.tableTitle th:nth-child(5),section.applyForm  section.rightContent table.tableContent td:nth-child(5){width: 10%;}
+section.applyForm  section.rightContent table.tableTitle th:nth-child(7),section.applyForm  section.rightContent table.tableContent td:nth-child(7){width: 12%;}
+section.applyForm  section.rightContent table.tableTitle th:nth-child(9),section.applyForm  section.rightContent table.tableContent td:nth-child(9){width: 12%;}
+/*右侧内容区-问题单*/
+section.questionForm section.rightContent .contentTitle{margin-top: 15px;}
+section.questionForm section.rightContent table.tableTitle th,section.questionForm  section.rightContent table.tableContent td{width: 15%;position: relative;}
+section.questionForm section.rightContent table.tableContent td a{cursor: default;position: relative;}
+section.questionForm section.rightContent table.tableContent td a.hasReply{cursor: pointer;color: #fff;padding: 7px 12px;background: #3a7dd8;border-radius: 5px;}
+section.questionForm section.rightContent table.tableContent td a.hasReply:hover{background: #3574ca;}
+section.questionForm section.rightContent table.tableTitle th:nth-child(2),section.questionForm section.rightContent table.tableContent td:nth-child(2){width: 25%;}
+section.questionForm section.rightContent table.tableTitle th:nth-child(3),section.questionForm section.rightContent table.tableContent td:nth-child(3){width: 18%;}
+section.questionForm section.rightContent table.tableTitle th:nth-child(4),section.questionForm section.rightContent table.tableContent td:nth-child(4){width: 12%;}
+section.questionForm section.rightContent table.tableTitle th:nth-child(5),section.questionForm section.rightContent table.tableContent td:nth-child(5){width: 30%;}
+/***遮罩层***/
+section.myScreenCover{width: 100%;height:100%;background: rgba(0,0,0,.5);position: fixed;z-index: 150;top:0;left: 0;display: none;}
+section.myScreenCover section.quesReplyAlert{width: 600px;margin: 0 auto;background: #fcfcfc;border-radius: 10px;}
+section.myScreenCover section.quesReplyAlert .alertTitle{height: 34px;border-bottom: 1px solid #eee;padding-top: 20px;}
+section.myScreenCover section.quesReplyAlert h1{font-size: 18px;color: #000;font-weight: normal;padding-left: 13px;}
+section.myScreenCover section.quesReplyAlert h2{font-size: 12px;color: #999;font-weight: normal;margin-top: 2px;margin-left: 5px;}
+section.myScreenCover section.quesReplyAlert i.iconClose{width: 17px;height: 17px;background-position: 0 -70px;margin-right: 20px;cursor: pointer}
+section.myScreenCover section.quesReplyAlert .alertTable{padding: 5px 12px;border-bottom: 1px solid #eee;}
+section.myScreenCover section.quesReplyAlert .alertTable table{width: 100%;}
+section.myScreenCover section.quesReplyAlert .alertTable td{border: 1px solid #d2d2d2;height: 22px;line-height: 22px;font-size: 12px;color: #999;padding: 0 6px;}
+section.myScreenCover section.quesReplyAlert .alertTable td.userText{padding: 12px 6px;}
+section.myScreenCover section.quesReplyAlert .alertChatArea{height: 219px;border-bottom: 1px solid #eee;overflow-y: scroll;padding: 15px 25px;}
+section.myScreenCover section.quesReplyAlert .alertChatArea p{width: 100%;font-size: 14px;color: #999;}
+section.myScreenCover section.quesReplyAlert .alertChatArea p.fr{text-align: right}
+section.myScreenCover section.quesReplyAlert .alertChatArea p span{margin-left: 10px;}
+section.myScreenCover section.quesReplyAlert .alertChatArea h3,section.myScreenCover section.quesReplyAlert .alertChatArea h4{padding: 6px 15px;line-height: 25px;font-size: 14px;font-weight: normal;margin-top: 10px;margin-bottom: 25px;border-radius: 7px;cursor: default;}
+section.myScreenCover section.quesReplyAlert .alertChatArea h3{font-size: 14px;color: #666;background: #fff;border: 1px solid #ddd;}
+section.myScreenCover section.quesReplyAlert .alertChatArea h4{font-size: 14px;color: #fff;background: #3a7dd8;border: 1px solid #3a7dd8;}
+section.myScreenCover section.quesReplyAlert .alertReplyArea{width: 534px;height: 89px;border: none;background: transparent;padding: 18px 33px;}
+section.myScreenCover section.quesReplyAlert .alertReplyArea.error{color: #f00;}
+section.myScreenCover section.quesReplyAlert a.submitReplayInAlert{display: block;width: 84px;height: 36px;color: #fff;background: #3a7dd8;margin-right: 26px;margin-bottom: 12px;text-align: center;line-height: 36px;margin-top: -15px;border-radius: 5px;}
+/*意见与反馈*/
+section.feedback .feedbackArea{width:610px;margin-left: 200px;}
+section.feedback .feedbackArea p{width: 100%;font-size: 14px;color: #999;margin-top: 20px;margin-bottom: 4px;border: 1px solid transparent;}
+section.feedback .feedbackArea p.halfType{width: 285px;}
+section.feedback .feedbackArea p.longType{width: 410px;}
+section.feedback .feedbackArea p.shortType{width: 160px;}
+section.feedback .feedbackArea .centerBlank{width: 35px;height: 30px;}
+section.feedback .feedbackArea a.chooseType{display: block;width:285px;height:137px;border: 1px solid #ddd;border-radius: 5px;position: relative;font-size: 14px;}
+section.feedback .feedbackArea a.chooseType h2{margin: 20px;padding: 0;color: #4e4e4e;}
+section.feedback .feedbackArea a.chooseType span{margin: 20px;padding: 0;color: #999;display: inline-block;margin-top: 10px;}
+section.feedback .feedbackArea a.chooseType.active{border: 1px solid #3a7dd8;background: #e8f2ff;}
+section.feedback .feedbackArea a.chooseType.active:before{content:'';width: 31px;height: 27px;position: absolute;right: 0;bottom: 0;background: url(../images/applyQuesQuery.png) no-repeat;background-size:85px auto;background-position: 0 -40px;overflow: hidden;}
+section.feedback .feedbackArea input{width: 265px;height: 35px;border: 1px solid #dbdbdb;border-radius: 5px;padding: 0 10px;}
+section.feedback .feedbackArea input.longType{width: 390px;}
+section.feedback .feedbackArea input.shortType{width: 140px;}
+section.feedback .feedbackArea textarea{width: 590px;height: 173px;border: 1px solid #dbdbdb;border-radius: 5px;padding: 10px;}
+section.feedback .feedbackArea input.error,section.feedback .feedbackArea textarea.error{border: 1px solid #f00;color: #f00;}
+section.feedback .feedbackArea a.submit{display: block;width: 145px;height: 38px;background: #3a7dd8;margin: 17px 232px 9px 232px;color: #fff;line-height: 38px;text-align: center;border-radius: 5px;}
+section.feedback .feedbackArea a.submit:hover{background: #3574ca;}
