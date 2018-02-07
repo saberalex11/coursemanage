@@ -118,16 +118,20 @@ layui.use(['form', 'laypage', 'layer', 'table', 'jquery', 'upload', 'element','l
         };
         $.ajax({
             type: "POST",
-            url: baseURL+"purchase/addPurchase.do",
+            url: baseURL+"purchase/reducePurchase.do",
             contentType: "application/json", //必须有
             dataType: "json", //表示返回值类型，不必须
             data: JSON.stringify(param),
-            success: function () {
-                layer.alert('添加成功', function(index){
-                    //do something
-                    layer.close(index);
-                    window.location.href="addPurchase.jsp";
-                });
+            success: function (data) {
+                if(data.code != 0){
+                    layer.msg(data.msg, {icon: 2});
+                }else{
+                    layer.alert('添加成功', function(index){
+                        //do something
+                        layer.close(index);
+                        window.location.href="reducePurchase.jsp";
+                    });
+                }
             }
         });
     });

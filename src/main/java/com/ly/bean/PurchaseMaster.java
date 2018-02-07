@@ -8,6 +8,7 @@ import java.util.Date;
 @Table(name = "purchase_master")
 public class PurchaseMaster {
 
+    @GeneratedValue(generator = "JDBC")
     @Id
     private Integer purchaseId;
 

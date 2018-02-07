@@ -25,7 +25,12 @@ public class PurchaseController extends BaseController{
 
     @RequestMapping("addPurchase")
     public R addPurchase(@RequestBody PurchaseVo vo){
-        logger.info("=");
+        purchaseMasterService.addPurchase(vo);
         return R.ok();
+    }
+
+    @RequestMapping("reducePurchase")
+    public R reducePurchase(@RequestBody PurchaseVo vo){
+        return purchaseMasterService.reducePuchase(vo);
     }
 }

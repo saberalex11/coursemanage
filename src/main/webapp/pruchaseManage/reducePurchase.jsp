@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>采购入库</title>
+    <title>采购出库</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta http-equiv="Access-Control-Allow-Origin" content="*">
@@ -18,7 +18,7 @@
 <body>
 <div class="layui-container" id="newProductApp">
     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-        <legend>采购入库</legend>
+        <legend>采购出库</legend>
     </fieldset>
 
     <form class="layui-form" action="">
@@ -103,7 +103,6 @@
 <div id="productDetail" style="display: none">
     <div class="layui-container" style="width: 700px;padding-top: 25px">
         <form class="layui-form" action="">
-            <input type="hidden" name="productId"/>
             <div class="layui-form-item">
                 <label class="layui-form-label"><em class="require">*</em>商品</label>
                 <div class="layui-input-block">
@@ -151,5 +150,5 @@
 <script type="text/javascript" src="../libs/jquery.min.js"></script>
 <script type="text/javascript" src="../libs/vue.js"></script>
 <script type="text/javascript" src="../js/common.js"></script>
-<script type="text/javascript" src="../js/purchaseManage/addPurchase.js"></script>
+<script type="text/javascript" src="../js/purchaseManage/reducePurchase.js"></script>
 </html>
