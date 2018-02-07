@@ -4,10 +4,21 @@ layui.config({
 var vm = new Vue({
     el:'#newProductApp',
     data : {
+        product:{
+            sortId:'',
+            id:'',
+            productName:'',
+            quantity:'',
+            price:'',
+            amount:''
+        },
+        products:[],
+        layerWindow:'',
+        amount:'0.00'
     },
     methods:{
         addDetail:function(){
-            layui.layer.open({
+            vm.layerWindow = layui.layer.open({
                 type: 1,
                 offset: '50px',
                 skin: 'layui-layer-molv',
@@ -17,6 +28,31 @@ var vm = new Vue({
                 shadeClose: true,
                 content: $('#productDetail') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
             });
+        },
+        delDetail:function(product){
+            //移除元素
+            vm.products.splice(product.sortId, 1);
+            var length = vm.products.length;
+            //调整后续元素的sortid值
+            for( var i = 0; i < length ; i++) {
+                if(product.sortId < vm.products[i].sortId) {
+                    vm.products[i].sortId -= 1;
+                }
+            }
+            vm.countAmount();
+        },
+        editDetail:function(product){
+
+        },
+        countAmount:function(){
+            setTimeout(function(){
+                var amount =  parseFloat(0);
+                $("input[name=detailAmount]").each(function(){
+                    amount += parseFloat($(this).val());
+                });
+                amount = amount.toFixed(2);
+                vm.amount = amount;
+                },500);
         }
     }
 });
@@ -47,7 +83,7 @@ layui.use(['form', 'laypage', 'layer', 'table', 'jquery', 'upload', 'element','l
     $.post(baseURL+"/product/queryAllProduct.do",null,function(data){
         var htmlStr="";
         $.each(data, function(idx, obj) {
-            htmlStr += "<option name='productDetailOption' value=\""+obj.id+"\" data-suggestBuyPrice=\""+obj.suggestBuyPrice+"\">"+obj.productName+"</option>"
+            htmlStr += "<option name='productDetailOption' value=\""+obj.productName+"\" data-suggestBuyPrice=\""+obj.suggestBuyPrice+"\">"+obj.productName+"</option>"
             if(idx === 0){
                 $("[name='suggestBuyPrice']").val(obj.suggestBuyPrice);
                 $("[name='productId']").val(obj.id);
@@ -73,5 +109,26 @@ layui.use(['form', 'laypage', 'layer', 'table', 'jquery', 'upload', 'element','l
             });
         });
     });
+
+    //明细添加提交
+    form.on('submit(purchaseDetailSubmit)', function(data){
+        var productData = data.field;
+        vm.product={};
+        vm.product.sortId = vm.products.length;
+        vm.product.id = productData.productId;
+        vm.product.productName = productData.productName;
+        vm.product.price = productData.purchaseUnitPrice;
+        vm.product.quantity = productData.purchaseQuantity;
+        vm.product.amount = parseFloat(productData.purchaseUnitPrice * productData.purchaseQuantity).toFixed(2);
+        vm.products.push(vm.product);
+        vm.product={};
+        $("input[name='purchaseQuantity']").val('');
+        $("input[name='purchaseUnitPrice']").val('');
+        layui.layer.close(vm.layerWindow);
+        vm.countAmount();
+    });
+
+
+
 });
 

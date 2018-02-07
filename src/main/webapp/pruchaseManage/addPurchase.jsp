@@ -33,14 +33,14 @@
         <div class="layui-form-item">
             <label class="layui-form-label"><em class="require">*</em>采购日期</label>
             <div class="layui-input-block">
-                <input type="text" id="purchaseDate" name="purchaseDate" lay-verify="required" autocomplete="off" placeholder="采购日期" class="layui-input">
+                <input type="text" id="purchaseDate" name="purchaseDate" lay-verify="required|date" autocomplete="off" placeholder="采购日期" class="layui-input">
             </div>
         </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">总金额</label>
             <div class="layui-input-block">
-                <input readonly type="text" name="quantity" lay-verify="required|number" autocomplete="off" placeholder="总金额" class="layui-input">
+                <input v-model="amount" readonly type="text" name="quantity" lay-verify="required|number" autocomplete="off" placeholder="总金额" class="layui-input">
             </div>
         </div>
 
@@ -51,11 +51,50 @@
             </div>
         </div>
 
+        <div class="layui-row" style="padding-top:10px;padding-bottom:20px" v-for="product in products">
+                <div class="layui-col-md9">
+                    <div class="layui-form-item" pane="">
+                        <label class="layui-form-label">商品编号</label>
+                        <div class="layui-input-block">
+                            <input type="text" readonly lay-verify="title" v-model="product.id" class="layui-input"/>
+                        </div>
+                    </div>
+                    <div class="layui-form-item" pane="">
+                        <label class="layui-form-label">商品名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" readonly lay-verify="title" v-model="product.productName" class="layui-input"/>
+                        </div>
+                    </div>
+                    <div class="layui-form-item" pane="">
+                        <label class="layui-form-label">单价</label>
+                        <div class="layui-input-block">
+                            <input type="text" readonly lay-verify="title" v-model="product.price" class="layui-input"/>
+                        </div>
+                    </div>
+                    <div class="layui-form-item" pane="">
+                        <label class="layui-form-label">数量</label>
+                        <div class="layui-input-block">
+                            <input type="text" readonly lay-verify="title" v-model="product.quantity" class="layui-input"/>
+                        </div>
+                    </div>
+                    <div class="layui-form-item" pane="">
+                        <label class="layui-form-label">金额</label>
+                        <div class="layui-input-block">
+                            <input name="detailAmount"  type="text" readonly lay-verify="title" v-model="product.amount" class="layui-input"/>
+                        </div>
+                    </div>
+                    <div class="layui-form-item" pane="">
+                        <div class="layui-input-block">
+                            <%--<button type="button" class="layui-btn layui-btn-small"  @click="editDetail(product)">修改本条</button>--%>
+                            <button type="button" class="layui-btn layui-btn-danger layui-btn-small"  @click="delDetail(product)">删除本条</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
 
         <div class="layui-form-item">
             <div class="layui-input-block">
                 <button type="button" class="layui-btn" lay-submit="" lay-filter="productSubmit">提交</button>
-                <a type="button" class="layui-btn layui-btn-danger" href="productManage.jsp">取消</a>
             </div>
         </div>
     </form>
@@ -82,14 +121,14 @@
             <div class="layui-form-item">
                 <label class="layui-form-label"><em class="require">*</em>单价</label>
                 <div class="layui-input-block">
-                    <input  type="text" name="purchaseUnitPrice" lay-verify="number|required" autocomplete="off" placeholder="单价" class="layui-input">
+                    <input  type="text" name="purchaseUnitPrice" lay-verify="required|number" autocomplete="off" placeholder="单价" class="layui-input">
                 </div>
             </div>
 
             <div class="layui-form-item">
                 <label class="layui-form-label"><em class="require">*</em>数量</label>
                 <div class="layui-input-block">
-                    <input  type="text" name="purchaseQuantity" lay-verify="number|required" autocomplete="off" placeholder="数量" class="layui-input">
+                    <input  type="text" name="purchaseQuantity" lay-verify="required|number" autocomplete="off" placeholder="数量" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
