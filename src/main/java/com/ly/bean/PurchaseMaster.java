@@ -18,6 +18,27 @@ public class PurchaseMaster {
 
     private Integer purchaseProperty;
 
+    private Double amount;
+
+    @Override
+    public String toString() {
+        return "PurchaseMaster{" +
+                "purchaseId=" + purchaseId +
+                ", purchaseDate=" + purchaseDate +
+                ", supplierId=" + supplierId +
+                ", purchaseProperty=" + purchaseProperty +
+                ", amount=" + amount +
+                '}';
+    }
+
+    public Double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Double amount) {
+        this.amount = amount;
+    }
+
     public Integer getPurchaseId() {
         return purchaseId;
     }
@@ -50,13 +71,4 @@ public class PurchaseMaster {
         this.purchaseProperty = purchaseProperty;
     }
 
-    @Override
-    public String toString() {
-        return "PurchaseMaster{" +
-                "purchaseId=" + purchaseId +
-                ", purchaseDate=" + purchaseDate +
-                ", supplierId=" + supplierId +
-                ", purchaseProperty=" + purchaseProperty +
-                '}';
-    }
 }

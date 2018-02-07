@@ -47,7 +47,7 @@ var vm = new Vue({
         countAmount:function(){
             setTimeout(function(){
                 var amount =  parseFloat(0);
-                $("input[name=detailAmount]").each(function(){
+                $("input[name=purchaseAmount]").each(function(){
                     amount += parseFloat($(this).val());
                 });
                 amount = amount.toFixed(2);
@@ -75,7 +75,7 @@ layui.use(['form', 'laypage', 'layer', 'table', 'jquery', 'upload', 'element','l
         $.each(supplierData, function(idx, obj) {
             htmlStr += "<option value=\""+obj.supplierId+"\">"+obj.supplierSimpleName+"</option>"
         });
-        $("[name='supplier']").html(htmlStr);
+        $("[name='supplierId']").html(htmlStr);
         layui.form.render('select');
     });
 
@@ -100,13 +100,31 @@ layui.use(['form', 'laypage', 'layer', 'table', 'jquery', 'upload', 'element','l
         $("[name='productId']").val(selectedOp.val());
     });
 
+    //提交所有数据
     form.on('submit(productSubmit)', function(data){
-        $.post(baseURL+"/product/addProduct.do",data.field,function (data){
-            layer.alert('保存成功', function(index){
-                //do something
-                layer.close(index);
-                window.location.href="productManage.jsp";
-            });
+        var detailList=[];
+
+        $("div[data-flag='productDetailInfo']").each(function(){
+            var detail={};
+            detail.productId = $(this).find('input[name="productId"]').val();
+            detail.purchaseQuantity = $(this).find('input[name="purchaseQuantity"]').val();
+            detail.purchaseUnitPrice = $(this).find('input[name="purchaseUnitPrice"]').val();
+            detail.purchaseAmount = $(this).find('input[name="purchaseAmount"]').val();
+            detailList.push(detail);
+        });
+        var param = {
+            'purchaseMaster':data.field,
+            'purchaseDetail':detailList
+        };
+        $.ajax({
+            type: "POST",
+            url: baseURL+"purchase/addPurchase.do",
+            contentType: "application/json", //必须有
+            dataType: "json", //表示返回值类型，不必须
+            data: JSON.stringify(param),
+            success: function () {
+                // alert(jsonResult);
+            }
         });
     });
 
