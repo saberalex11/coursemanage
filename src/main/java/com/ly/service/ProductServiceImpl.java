@@ -25,7 +25,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> queryAll(Product record) {
-        return null;
+        return productMapper.selectAll();
     }
 
     @Override

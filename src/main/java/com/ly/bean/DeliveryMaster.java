@@ -1,5 +1,7 @@
 package com.ly.bean;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
@@ -29,6 +31,7 @@ public class DeliveryMaster implements Serializable {
      *
      * @mbggenerated
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date deliveryDate;
 
     /**

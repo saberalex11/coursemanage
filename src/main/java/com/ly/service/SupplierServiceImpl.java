@@ -26,7 +26,7 @@ public class SupplierServiceImpl implements SupplierService {
 
     @Override
     public List<Supplier> queryAll(Supplier record) {
-        return null;
+        return SupplierMapper.selectAll();
     }
 
     @Override

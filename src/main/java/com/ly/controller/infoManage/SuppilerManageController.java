@@ -2,6 +2,7 @@ package com.ly.controller.infoManage;
 
 import com.ly.bean.Customer;
 import com.ly.bean.CustomerContactMan;
+import com.ly.bean.Supplier;
 import com.ly.bean.SupplierContactMan;
 import com.ly.service.*;
 import com.ly.utils.R;
@@ -30,5 +31,11 @@ public class SuppilerManageController {
     public R querySupplierContactById(SupplierContactMan supplierContactMan){
         List<SupplierContactMan> supplierContactMEN = supplierContactManService.queryByExample(supplierContactMan);
         return R.ok().put("data",supplierContactMEN);
+    }
+
+    @RequestMapping("queryAllSupplier")
+    public R queryAllSupplier(){
+        List<Supplier> suppliers = supplierService.queryAll(null);
+        return R.ok().put("data",suppliers);
     }
 }

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/product")
 public class ProductManageController {
@@ -41,5 +43,10 @@ public class ProductManageController {
     public R saveProduct(Product product){
         productService.updateByPrimaryKeySelective(product);
         return R.ok();
+    }
+
+    @RequestMapping("queryAllProduct")
+    public List<Product> queryAllProduct(){
+        return productService.queryAll(null);
     }
 }
