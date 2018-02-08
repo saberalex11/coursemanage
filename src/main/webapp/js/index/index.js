@@ -131,7 +131,10 @@ layui.config({
     //退出
     $(".signOut").click(function(){
       $.post(baseURL+"sys/loginOut.do",null,function(){
-      })
+      });
+        window.sessionStorage.removeItem("menu");
+        menu = [];
+        window.sessionStorage.removeItem("curmenu");
     });
 
     //隐藏左侧导航
