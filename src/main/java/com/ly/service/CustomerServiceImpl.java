@@ -25,7 +25,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public List<Customer> queryAll(Customer record) {
-        return null;
+        return customerMapper.selectAll();
     }
 
     @Override
@@ -35,7 +35,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer queryByPrimaryKey(Object key) {
-        return null;
+        return customerMapper.selectByPrimaryKey(key);
     }
 
     @Override
@@ -65,7 +65,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public int updateByPrimaryKeySelective(Customer record) {
-        return 0;
+        return customerMapper.updateByPrimaryKeySelective(record);
     }
 
     @Override

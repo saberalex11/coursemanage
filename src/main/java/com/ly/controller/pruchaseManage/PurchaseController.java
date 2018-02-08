@@ -1,11 +1,10 @@
 package com.ly.controller.pruchaseManage;
 
 
-import com.alibaba.fastjson.JSONObject;
 import com.ly.controller.BaseController;
 import com.ly.service.PurchaseDetailService;
 import com.ly.service.PurchaseMasterService;
-import com.ly.service.PurchaseVo;
+import com.ly.service.vo.PurchaseVo;
 import com.ly.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;

@@ -17,8 +17,8 @@ public class ProductManageController {
     private ProductService productService;
 
     @RequestMapping("queryProduct")
-    public R queryProduct(String prodcutName,Integer page,Integer limit){
-       return productService.queryProduct(prodcutName,page,limit);
+    public R queryProduct(String prodcutName,Integer page,Integer limit,Integer stockStart,Integer stockEnd){
+       return productService.queryProduct(prodcutName,page,limit,stockStart,stockEnd);
     }
 
     @RequestMapping("addProduct")

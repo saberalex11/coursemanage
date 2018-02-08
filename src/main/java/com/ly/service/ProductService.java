@@ -6,5 +6,5 @@ import com.ly.utils.R;
 import java.util.List;
 
 public interface ProductService extends BasicService<Product> {
-    R queryProduct(String prodcutName, Integer page, Integer limit);
+    R queryProduct(String prodcutName, Integer page, Integer limit,Integer stockStart,Integer stockEnd);
 }

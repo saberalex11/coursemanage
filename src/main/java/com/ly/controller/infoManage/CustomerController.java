@@ -1,6 +1,7 @@
 package com.ly.controller.infoManage;
 
 
+import com.ly.bean.Customer;
 import com.ly.bean.CustomerContactMan;
 import com.ly.bean.SupplierContactMan;
 import com.ly.service.CustomerContactManService;
@@ -34,4 +35,9 @@ public class CustomerController {
         List<CustomerContactMan> infos = customerContactManService.queryByExample(customer);
         return R.ok().put("data",infos);
     }
+    @RequestMapping("queryAllCustomer")
+    public List<Customer> queryAllCustomer(){
+        return customerService.queryAll(null);
+    }
+
 }

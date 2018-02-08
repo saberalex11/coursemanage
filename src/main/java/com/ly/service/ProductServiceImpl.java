@@ -79,20 +79,19 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public R queryProduct(String prodcutName, Integer page, Integer limit) {
+    public R queryProduct(String prodcutName, Integer page, Integer limit,Integer stockStart,Integer stockEnd) {
         Example ex = new Example(Product.class);
         Example.Criteria criteria = ex.createCriteria();
+
+        if(stockStart != null && stockEnd!= null){
+            criteria.andCondition(" quantity between " + stockStart +" and "+stockEnd);
+        }
         if(StringUtils.isNotBlank(prodcutName)){
             criteria.andCondition(" product_name like '%"+prodcutName+"%'");
-            PageHelper.startPage(page, limit, true);
-            List<Product> products = productMapper.selectByExample(ex);
-            int i = productMapper.selectCountByExample(ex);
-            return R.ok().put("data",products).put("count",i);
-        }else{
-            PageHelper.startPage(page, limit, true);
-            List<Product> products = productMapper.selectAll();
-            int i = productMapper.selectCountByExample(ex);
-            return R.ok().put("data",products).put("count",i);
         }
+        PageHelper.startPage(page, limit, true);
+        List<Product> products = productMapper.selectByExample(ex);
+        int i = productMapper.selectCountByExample(ex);
+        return R.ok().put("data",products).put("count",i);
     }
 }

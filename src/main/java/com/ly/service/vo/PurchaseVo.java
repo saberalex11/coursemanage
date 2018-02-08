@@ -1,4 +1,4 @@
-package com.ly.service;
+package com.ly.service.vo;
 
 import com.ly.bean.PurchaseDetail;
 import com.ly.bean.PurchaseMaster;

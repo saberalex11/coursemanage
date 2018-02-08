@@ -26,7 +26,7 @@ public class SalesManServiceImpl implements SalesManService {
 
     @Override
     public List<SalesMan> queryAll(SalesMan record) {
-        return null;
+        return salesManMapper.selectAll();
     }
 
     @Override
