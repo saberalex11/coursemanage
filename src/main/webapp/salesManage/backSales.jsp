@@ -131,7 +131,7 @@
                 </div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label">建议购买价</label>
+                <label class="layui-form-label">建议销售价</label>
                 <div class="layui-input-block">
                     <input readonly type="text" name="suggestBuyPrice" lay-verify="number" autocomplete="off" placeholder="建议购买价" class="layui-input">
                 </div>
