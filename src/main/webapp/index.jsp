@@ -31,7 +31,7 @@
             <div class="larry-right-menu posb">
                 <ul class="layui-nav clearfix">
                     <li class="layui-nav-item" mobile>
-                        <a href="login.html" class="signOut"><i class="iconfont icon-tuichu"></i> 退出</a>
+                        <a href="login.jsp" class="signOut"><i class="iconfont icon-tuichu"></i> 退出</a>
                     </li>
                 </ul>
             </div><!--顶部右侧菜单结束-->

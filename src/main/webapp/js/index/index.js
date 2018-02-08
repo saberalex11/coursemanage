@@ -130,13 +130,8 @@ layui.config({
 
     //退出
     $(".signOut").click(function(){
-      //删除本地token
-      //跳转到登录页面
-      //location.href = baseURL + 'login.html';
-      //移除菜单数据
-      window.sessionStorage.removeItem("menu");
-      menu = [];
-      window.sessionStorage.removeItem("curmenu");
+      $.post(baseURL+"sys/loginOut.do",null,function(){
+      })
     });
 
     //隐藏左侧导航

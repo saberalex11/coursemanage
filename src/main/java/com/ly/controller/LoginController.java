@@ -52,4 +52,11 @@ public class LoginController extends BaseController {
             return R.error(-1,"未知错误");
         }
     }
+
+    @RequestMapping("loginOut")
+    public void loginOut(HttpServletRequest request){
+        logger.info("登出");
+        request.getSession().removeAttribute("loginUser");
+        request.getSession().removeAttribute("result");
+    }
 }
