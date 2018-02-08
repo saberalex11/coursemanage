@@ -76,7 +76,7 @@
 		<!-- 引入实体类别名 -->
 		<property name="configLocation" value="classpath:mybatis.xml" />
 		<!-- 自动扫描mapping.xml文件 -->
-		<!--<property name="mapperLocations" value="classpath:com/wyq/mapping/**/*.xml"></property>-->
+		<property name="mapperLocations" value="classpath:com/ly/mapping/**/*.xml"></property>
 		<!-- 加入Mybatis物理分页插件 -->
 		<property name="typeAliasesPackage" value="com.isea533.mybatis.model"/>
 		  <property name="plugins">
