@@ -93,9 +93,9 @@ layui.use(['form', 'laypage', 'layer', 'table', 'jquery', 'upload', 'element','l
     $.post(baseURL+"/product/queryAllProduct.do",null,function(data){
         var htmlStr="";
         $.each(data, function(idx, obj) {
-            htmlStr += "<option name='productDetailOption' value=\""+obj.productName+"\" data-id='"+obj.id+"' data-suggestBuyPrice=\""+obj.suggestBuyPrice+"\">"+obj.productName+"</option>"
+            htmlStr += "<option name='productDetailOption' value=\""+obj.productName+"\" data-id='"+obj.id+"' data-suggestBuyPrice=\""+obj.suggestSalePrice+"\">"+obj.productName+"</option>"
             if(idx === 0){
-                $("[name='suggestBuyPrice']").val(obj.suggestBuyPrice);
+                $("[name='suggestBuyPrice']").val(obj.suggestSalePrice);
                 $("[name='productId']").val(obj.id);
             }
         });
