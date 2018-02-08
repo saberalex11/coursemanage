@@ -70,8 +70,8 @@
                 </li>
             </ul>
             <div class="layui-tab-content clildFrame">
-                <div class="layui-tab-item layui-show">
-                    <iframe src=""></iframe>
+                <div class="layui-tab-item layui-show" style="text-align: center">
+                    <img style="width: 800px;" src="images/fruit.png"/>
                 </div>
             </div>
         </div>
