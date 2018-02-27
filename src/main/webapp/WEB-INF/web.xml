@@ -8,13 +8,13 @@
 	<!-- 登录跳转过滤器 -->
 	<filter>
 		<filter-name>LoginForwarFilter</filter-name>
-		<filter-class>com.ly.filter.LoginForwarFilter</filter-class>
+		<filter-class>com.wyq.filter.LoginForwarFilter</filter-class>
 		<init-param>
 			<description>
 				不需要进行拦截的 url 的正则表达式，即：如果当前请求的 url 的 servletPath 能匹配该正则表达式，则直接放行（即使未登录系统）。
 			</description>
 			<param-name>excepUrlRegex</param-name>
-			<param-value>**.woff,**.ttf,**.js,**.css,**.jpg,**.JPG,**.JPEG,**.gif,**.png,**.PNG,**.swf,**/login.jsp,**/signUp.jsp,**/sys/login.do,**/sys/signUp.do,**.ico</param-value>
+			<param-value>**.woff,**.ttf,**.js,**.css,**.jpg,**.JPG,**.JPEG,**.gif,**.png,**.PNG,**.swf,**/login.jsp,**/signUp.jsp,**/sys/login.do,**/sys/signUp.do,**/course/queryAllCourse.do,**.ico</param-value>
 		</init-param>
 	</filter>
 	<filter-mapping>

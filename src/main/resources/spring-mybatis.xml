@@ -21,7 +21,7 @@
 	<aop:aspectj-autoproxy proxy-target-class="true" />
 
 	<!-- 自动扫描 -->
-	<context:component-scan base-package="com.ly"/>
+	<context:component-scan base-package="com.wyq"/>
 
 	<!--<bean id="exceptionHandler" class="com.asiainfo.modules.common.MyExceptionHandler"/>-->
 
@@ -76,7 +76,7 @@
 		<!-- 引入实体类别名 -->
 		<property name="configLocation" value="classpath:mybatis.xml" />
 		<!-- 自动扫描mapping.xml文件 -->
-		<property name="mapperLocations" value="classpath:com/ly/mapping/**/*.xml"></property>
+		<!--<property name="mapperLocations" value="classpath:com/wyq/mapping/**/*.xml"></property>-->
 		<!-- 加入Mybatis物理分页插件 -->
 		<property name="typeAliasesPackage" value="com.isea533.mybatis.model"/>
 		  <property name="plugins">
@@ -96,7 +96,7 @@
 	<!-- DAO接口所在包名，Spring会自动查找其下的类 -->
 	<!-- com.github.abel533.entity 自动扫描分页主键 -->
 	<bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
-	    <property name="basePackage" value="com.ly.mapper"/>
+	    <property name="basePackage" value="com.wyq.mapper"/>
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
 	    <property name="properties">
 	        <value>
@@ -125,7 +125,7 @@
 	</bean>
 	<!-- 面向切面进行事物管理 -->
     <aop:config>
-		<aop:pointcut expression="execution(public * com.ly.service.*Impl.*(..))" id="pointcut"/>
+		<aop:pointcut expression="execution(public * com.wyq.service.*Impl.*(..))" id="pointcut"/>
 		<aop:advisor advice-ref="txAdviceSysParameter" pointcut-ref="pointcut"/>
 	</aop:config>
 	<tx:advice id="txAdviceSysParameter" transaction-manager="transactionManager">

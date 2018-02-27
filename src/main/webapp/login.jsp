@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>水果进出货管理系统</title>
+    <title>选课管理系统</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -17,7 +17,7 @@
 <body>
 <div class="video_mask"></div>
 <div class="login" id="dqapp" v-cloak>
-    <h1>水果进出货管理系统</h1>
+    <h1>选课管理系统</h1>
     <div class="layui-form">
         <div class="layui-form-item">
             <input class="layui-input" name="userAccount" placeholder="用户名" v-model="userAccount" type="text" >

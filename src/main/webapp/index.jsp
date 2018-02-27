@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>水果进出货管理系统</title>
+    <title>选课管理系统</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta http-equiv="Access-Control-Allow-Origin" content="*">
@@ -22,7 +22,7 @@
     <!-- 顶部 -->
     <div class="layui-header header header-menu">
         <div class="layui-main">
-            <a href="#" class="logo">水果进出货管理系统</a>
+            <a href="#" class="logo">选课管理系统</a>
 
             <!-- 顶级菜单区域 -->
             <div class="larry-top-menu posb topMenu" id="topMenu">
@@ -43,7 +43,7 @@
     <div class="layui-side layui-bg-black">
         <div class="user-photo">
             <a class="img" title="我的头像" ><img src="images/face.jpg"></a>
-            <p>你好！<span class="userName">{{user.userAccount}}</span>, 欢迎登录</p>
+            <p>你好！<span class="userName">{{user.name}}</span>, 欢迎登录</p>
         </div>
         <!-- 左侧菜单-->
         <div class="navBar layui-side-scroll" id="navBarId">

@@ -35,7 +35,7 @@ var vm = new Vue({
         parent.location.href ='signUp.jsp';
     },
     login: function () {
-      var data = "userAccount="+vm.userAccount+"&password="+hex_sha256(vm.password);
+      var data = "account="+vm.userAccount+"&password="+hex_sha256(vm.password);
       var loginLoading = top.layer.msg('登录中...请稍候',{icon: 16,time:false,shade:0.8});
       $.ajax({
         type: "POST",
@@ -45,7 +45,6 @@ var vm = new Vue({
         success: function(r){
           top.layer.close(loginLoading);
           if(r.code === 0){//登录成功
-              console.log("ddddd");
             parent.location.href ='index.jsp';
           }else{
             layer.msg(r.msg);
