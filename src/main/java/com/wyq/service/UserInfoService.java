@@ -1,6 +1,7 @@
 package com.wyq.service;
 
 import com.wyq.bean.Account;
+import com.wyq.utils.R;
 
 public interface UserInfoService extends BasicService<Account> {
 
@@ -11,4 +12,8 @@ public interface UserInfoService extends BasicService<Account> {
     void signUp(Account account,Integer courseId);
 
     Account checkAdmin();
+
+    R listAccount(String account,String name,Integer page, Integer limit);
+
+    R listTeacherAccount(String account,String name,Integer page, Integer limit);
 }

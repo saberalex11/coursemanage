@@ -1,17 +1,24 @@
 package com.wyq.service;
 
+import com.github.pagehelper.PageHelper;
 import com.wyq.bean.Account;
 import com.wyq.bean.Course;
 import com.wyq.bean.CourseTeacherRel;
+import com.wyq.bean.Notice;
 import com.wyq.mapper.CourseMapper;
 import com.wyq.mapper.CourseTeacherRelMapper;
 import com.wyq.mapper.UserInfoMapper;
+import com.wyq.service.vo.TeacherVo;
+import com.wyq.utils.R;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserInfoServiceImpl implements UserInfoService {
@@ -67,12 +74,16 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Override
     public int updateByPrimaryKey(Account record) {
-        return 0;
+        record = AccountMapper.selectByPrimaryKey(record.getId());
+        record.setAccountStatus(0);
+        record.setCreateTime(new Date());
+        return AccountMapper.updateByPrimaryKeySelective(record);
     }
 
     @Override
     public int updateByPrimaryKeySelective(Account record) {
-        return 0;
+        record.setCreateTime(new Date());
+        return AccountMapper.updateByPrimaryKeySelective(record);
     }
 
     @Override
@@ -139,5 +150,53 @@ public class UserInfoServiceImpl implements UserInfoService {
             return Accounts.get(0);
         }
         return null;
+    }
+
+    @Override
+    public R listAccount(String account, String name, Integer page, Integer limit) {
+        Example ex = new Example(Account.class);
+        Example.Criteria criteria = ex.createCriteria();
+        criteria.andCondition(" account_status = 1");
+        if(StringUtils.isNotBlank(account)){
+            criteria.andCondition(" account like '%"+account+"%'");
+        }
+        if(StringUtils.isNotBlank(name)){
+            criteria.andCondition(" name like '%"+name+"%'");
+        }
+        PageHelper.startPage(page, limit, true);
+        List<Account> notices = AccountMapper.selectByExample(ex);
+        int count = AccountMapper.selectCountByExample(ex);
+        return R.ok().put("data",notices).put("count",count);
+    }
+
+    @Override
+    public R listTeacherAccount(String account, String name, Integer page, Integer limit) {
+        Example ex = new Example(Account.class);
+        Example.Criteria criteria = ex.createCriteria();
+        criteria.andCondition(" account_status = 1");
+        criteria.andCondition( " account_type = 1");
+        if(StringUtils.isNotBlank(account)){
+            criteria.andCondition(" account like '%"+account+"%'");
+        }
+        if(StringUtils.isNotBlank(name)){
+            criteria.andCondition(" name like '%"+name+"%'");
+        }
+        PageHelper.startPage(page, limit, true);
+        List<Account> accounts = AccountMapper.selectByExample(ex);
+        int count = AccountMapper.selectCountByExample(ex);
+
+        List<TeacherVo> collect = accounts.parallelStream().map(p -> {
+            TeacherVo vo = new TeacherVo();
+            BeanUtils.copyProperties(p, vo);
+            Example ex1 = new Example(CourseTeacherRel.class);
+            Example.Criteria criteria1 = ex1.createCriteria();
+            criteria1.andCondition(" teacher_id =" + p.getId());
+            criteria1.andCondition(" status = 1");
+            List<CourseTeacherRel> courseTeacherRels = courseTeacherRelMapper.selectByExample(ex1);
+            CourseTeacherRel ctr = courseTeacherRels.get(0);
+            vo.setCourseName(ctr.getCourseName());
+            return vo;
+        }).collect(Collectors.toList());
+        return R.ok().put("data",collect).put("count",count);
     }
 }

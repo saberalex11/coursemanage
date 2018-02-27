@@ -19,4 +19,6 @@ public interface CourseService {
     R queryStudentCourse(Account current, CourseQCO qco, Integer page, Integer limit);
 
     R queryTeacherCourse(Account current, CourseQCO qco, Integer page, Integer limit);
+
+    R updateTeacherCourse(Integer teacherId, Integer courseId);
 }

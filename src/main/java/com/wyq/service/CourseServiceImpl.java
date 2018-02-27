@@ -116,4 +116,21 @@ public class CourseServiceImpl implements CourseService {
         int count = courseMapper.queryTeacherCourseCount(qco);
         return R.ok().put("data",courseVos).put("count",count);
     }
+
+    @Override
+    public R updateTeacherCourse(Integer teacherId, Integer courseId) {
+        Example ex = new Example(CourseTeacherRel.class);
+        Example.Criteria criteria = ex.createCriteria();
+
+        //校验是否选过该课程
+        criteria.andCondition(" teacher_id="+teacherId)
+                .andCondition(" status = 1");
+        List<CourseTeacherRel> courseTeacherRels = courseTeacherRelMapper.selectByExample(ex);
+        CourseTeacherRel courseTeacherRel = courseTeacherRels.get(0);
+        Course course = courseMapper.selectByPrimaryKey(courseId);
+        courseTeacherRel.setCourseId(courseId);
+        courseTeacherRel.setCourseName(course.getCourseName());
+        courseTeacherRelMapper.updateByPrimaryKeySelective(courseTeacherRel);
+        return R.ok();
+    }
 }

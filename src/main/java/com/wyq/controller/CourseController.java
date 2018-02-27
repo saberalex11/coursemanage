@@ -90,4 +90,9 @@ public class CourseController extends BaseController {
         Account current = this.getCurrent(request);
         return courseService.queryTeacherCourse(current,qco,page,limit);
     }
+
+    @RequestMapping("updateTeacherCourse")
+    public R updateTeacherCourse( Integer teacherId, Integer courseId){
+        return courseService.updateTeacherCourse(teacherId,courseId);
+    }
 }
