@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wyq.mapper.CourseMapper">
+
+    <resultMap id="resultMap"
+               type="com.wyq.service.vo.CourseVo">
+        <result column="id" property="id" jdbcType="INTEGER" />
+        <result column="courseName" property="course_name" jdbcType="VARCHAR" />
+        <result column="teacherName" property="teacher_name" jdbcType="VARCHAR" />
+        <result column="studentName" property="studentName" jdbcType="VARCHAR" />
+        <result column="createTime" property="create_time" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+
+    <select id="queryStudentCourse" resultMap="resultMap" parameterType="com.wyq.service.qco.CourseQCO">
+        SELECT
+            cs.id,
+            cs.student_name,
+            cs.create_time,
+            ct.course_name,
+            ct.teacher_name
+        FROM
+            course_student_rel cs
+        LEFT JOIN course_teacher_rel ct ON cs.rel_id = ct.id
+        WHERE
+            cs.`status` = 1 AND cs.student_id = #{studentId,jdbcType=INTEGER}
+        <if test="courseName != null">
+            AND ct.course_name like '%${courseName}%'
+        </if>
+        <if test="teacherName != null">
+            AND ct.teacher_name like '%${teacherName}%'
+        </if>
+    </select>
+
+
+    <select id="queryStudentCourseCount" resultType="Integer" parameterType="com.wyq.service.qco.CourseQCO">
+        SELECT count(*) from (
+            SELECT
+            cs.id,
+            cs.student_name,
+            cs.create_time,
+            ct.course_name,
+            ct.teacher_name
+            FROM
+            course_student_rel cs
+            LEFT JOIN course_teacher_rel ct ON cs.rel_id = ct.id
+            WHERE
+            cs.`status` = 1 AND cs.student_id = #{studentId,jdbcType=INTEGER}
+            <if test="courseName != null">
+                AND ct.course_name like '%${courseName}%'
+            </if>
+            <if test="teacherName != null">
+                AND ct.teacher_name like '%${teacherName}%'
+            </if>
+        )table1
+    </select>
+
+    <select id="queryTeacherCourse" resultMap="resultMap" parameterType="com.wyq.service.qco.CourseQCO">
+        SELECT
+        cs.id,
+        cs.student_name,
+        cs.create_time,
+        ct.course_name,
+        ct.teacher_name
+        FROM
+        course_student_rel cs
+        LEFT JOIN course_teacher_rel ct ON cs.rel_id = ct.id
+        WHERE
+        cs.`status` = 1 AND ct.teacher_id = #{teacherId,jdbcType=INTEGER}
+        <if test="studentName != null">
+            AND cs.student_name like '%${studentName}%'
+        </if>
+    </select>
+
+
+    <select id="queryTeacherCourseCount" resultType="Integer" parameterType="com.wyq.service.qco.CourseQCO">
+        SELECT count(*) from (
+        SELECT
+        cs.id,
+        cs.student_name,
+        cs.create_time,
+        ct.course_name,
+        ct.teacher_name
+        FROM
+        course_student_rel cs
+        LEFT JOIN course_teacher_rel ct ON cs.rel_id = ct.id
+        WHERE
+        cs.`status` = 1 AND ct.teacher_id = #{teacherId,jdbcType=INTEGER}
+        <if test="studentName != null">
+            AND cs.student_name like '%${studentName}%'
+        </if>
+        )table1
+    </select>
+</mapper>

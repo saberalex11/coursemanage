@@ -57,7 +57,7 @@
 
         <div class="layui-tab marg0" lay-filter="bodyTab" id="top_tabs_box">
             <ul class="layui-tab-title top_tab" id="top_tabs">
-                <li class="layui-this" lay-id=""><i class="iconfont icon-computer"></i> <cite>我的首页</cite></li>
+                <li class="layui-this" lay-id=""><i class="iconfont icon-computer"></i> <cite>公告展示</cite></li>
             </ul>
             <ul class="layui-nav closeBox">
                 <li class="layui-nav-item">
@@ -70,8 +70,8 @@
                 </li>
             </ul>
             <div class="layui-tab-content clildFrame">
-                <div class="layui-tab-item layui-show" style="text-align: center">
-                    <img style="width: 800px;" src="images/fruit.png"/>
+                <div class="layui-tab-item layui-show">
+                    <iframe src="notice/notice.jsp"></iframe>
                 </div>
             </div>
         </div>

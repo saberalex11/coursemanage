@@ -19,6 +19,8 @@ public class Notice implements Serializable {
 
     private Integer createId;
 
+    private String createName;
+
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createTime;
 
@@ -80,8 +82,18 @@ public class Notice implements Serializable {
                 ", noticeTitle='" + noticeTitle + '\'' +
                 ", noticeDesc='" + noticeDesc + '\'' +
                 ", createId=" + createId +
+                ", createName='" + createName + '\'' +
                 ", createTime=" + createTime +
                 ", status=" + status +
                 '}';
     }
+
+    public String getCreateName() {
+        return createName;
+    }
+
+    public void setCreateName(String createName) {
+        this.createName = createName;
+    }
+
 }

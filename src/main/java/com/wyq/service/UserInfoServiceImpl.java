@@ -31,7 +31,7 @@ public class UserInfoServiceImpl implements UserInfoService {
     }
 
     @Override
-    public List<Account> queryAll(Account record) {
+    public List<Account> queryAll() {
         return null;
     }
 

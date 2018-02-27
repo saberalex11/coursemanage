@@ -18,7 +18,7 @@ public interface BasicService<T> {
      * 查询所有,如果传入null那么查询全部;如传入T对象那么会进行等于匹配
      * @return
      */
-    List<T> queryAll(T record);
+    List<T> queryAll();
     
     /**
      * 查询记录数,如果传入null那么查询全部;如传入T对象那么会进行等于匹配

@@ -20,9 +20,11 @@ public class LoginController extends BaseController {
     public R signUp(Account userInfo,Integer courseId){
         logger.info("注册开始");
         try{
-            Account checkAdmin = userInfoService.checkAdmin();
-            if(checkAdmin != null){
-                return R.error(-1,"已经存在一个管理员账号，不允许注册多个");
+            if(userInfo.getAccountType() == 0){
+                Account checkAdmin = userInfoService.checkAdmin();
+                if(checkAdmin != null){
+                    return R.error(-1,"已经存在一个管理员账号，不允许注册多个");
+                }
             }
             Account check = userInfoService.queryByAccount(userInfo.getAccount());
             if(check != null){

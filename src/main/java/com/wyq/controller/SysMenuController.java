@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
  */
 @RestController
 @RequestMapping("/sys/menu")
-public class SysMenuController{
+public class SysMenuController extends BaseController{
 
 	@Autowired
 	private SysMenuService sysMenuService;
@@ -43,7 +43,7 @@ public class SysMenuController{
 	public R user(@RequestParam Long parentId,HttpServletRequest request){
 		List<SysMenuEntity> subMenuList = sysMenuService.querySubMenuList(parentId);
 		List<SysMenuEntity> menuResultList = null;
-		Account current = (Account)request.getSession().getAttribute("loginUser");
+		Account current = this.getCurrent(request);
 		if(current.getAccountType() == 0){
 			menuResultList = subMenuList.parallelStream().filter(p -> StringUtils.isBlank(p.getPerms())
 					|| StringUtils.equals(p.getPerms(),"perm:admin")).collect(Collectors.toList());
