@@ -97,6 +97,12 @@ layui.config({
                     content: $('#resetDiv'), //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
                     btn: ['确认', '取消'],
                     yes: function(index,layero){
+
+                        if(vm.password.length <6  || vm.password.length > 20){
+                            layer.msg("密码长度为6-20");
+                            return;
+                        }
+
                         var param = {
                            'id':id,
                            'password':hex_sha256(vm.password)
